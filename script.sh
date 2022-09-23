@@ -1,4 +1,5 @@
 #!/bin/bash
+# -*- ENCODING: UTF-8 -*-
 echo INICIAR CON CABLE DE RED CONECTADO
 
 echo Instalación de Home Asssistant con Docker y Portainer
