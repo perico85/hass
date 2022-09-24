@@ -1,0 +1,20 @@
+Access ID/Client ID: vsckgraqafdvng5yrk4q
+Access Secret/Client Secret: fd2cf471b65248aeb62d8716c48d2c2e
+Project Code: p1663752758672rfu77w
+--------------------------------------
+gavriliumariamagda@gmail.com
+paquito1988!
+--------------------------------------
+Dispositivos:
+
+Interruptor cocina	bf511991f2733a99e9krns	WB02-NCD			gavriliumariamagda@gmail.com	Online	Real Device	2022-08-10 20:01:43	Read, write, and Manage	Debug Device
+Aire			bf5a0448ec8dae1bbaotmo	海尔家用空调（全功能)		gavriliumariamagda@gmail.com	Online	Real Device	2022-08-06 18:20:25	Read, write, and Manage	Debug Device
+Ambiente baño		bfc233e742d52adceal2op	TY-02-5CH			gavriliumariamagda@gmail.com	Offline	Real Device	2022-08-05 15:57:50	Read, write, and Manage	Debug Device
+Cagaero			bfafcf226b3b5ea68e2jvq	Aubess Smart Switch 3gang	gavriliumariamagda@gmail.com	Online	Real Device	2022-08-05 15:56:56	Read, write, and Manage	Debug Device
+Consumo Aire		bf7472aaf619ceb36fbk7t	Enchufe wifi			gavriliumariamagda@gmail.com	Online	Real Device	2022-08-04 14:20:15	Read, write, and Manage	Debug Device
+Terraza y LEDS		bffdf68ce993bf34feirs1	NHZS-2Ld-Switch--触摸开关2路	gavriliumariamagda@gmail.com	Online	Real Device	2022-01-26 20:19:12	Read, write, and Manage	Debug Device
+Lampara			605325882462ab455924	Smart Bulb			gavriliumariamagda@gmail.com	Online	Real Device	2021-10-19 23:47:09	Read, write, and Manage	Debug Device
+Salon			bfacbabec6f8175de9rqio	NHZSWB-触摸调光开关		gavriliumariamagda@gmail.com	Online	Real Device	2021-07-25 23:28:52	Read, write, and Manage	Debug Device
+Conmutada		bf4a87c298fa2ce0e8vyua	NHZSWB-触摸调光开关		gavriliumariamagda@gmail.com	Online	Real Device	2021-06-03 08:20:34	Read, write, and Manage	Debug Device
+Habitacion		bfd03d0fb7fec17049acqk	NHZSWB-触摸调光开关		gavriliumariamagda@gmail.com	Online	Real Device	2021-06-03 08:19:37	Read, write, and Manage	Debug Device
+--------------------------------------

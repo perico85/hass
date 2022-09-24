@@ -1,0 +1,111 @@
+#PARA EJECUTAR EL SCRIPT:
+
+chmod +x 0_instalacion.sh
+
+./0_instalacion.sh
+
+
+https://domotiqueros.com/como-instalar-mosquitto-en-portainer/
+
+----------------------------------------------------------
+
+docker run -d \
+  --name homeassistant \
+  --privileged \
+  --restart=unless-stopped \
+  -e ES=Europe/Madrid \
+  -v /homeassistant:/config \
+  --network=host \
+  ghcr.io/home-assistant/home-assistant:stable
+
+--------------------------------------------------------
+# Check the OS
+sudo cat /etc/os-release
+
+# Enter your user home directory
+cd /home/youruser
+
+# Update the OS
+sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
+
+# Fix broken previous installations if any
+sudo apt --fix-broken install
+
+# Additionally installl dnsutils to be able to use dig command to any address
+sudo apt install dnsutils
+
+# Install necessary tools for the Home Assistant Supervised
+sudo apt install jq wget curl udisks2 libglib2.0-bin network-manager dbus apparmor apparmor-utils -y
+
+# See https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md
+
+# For the Raspberry Pi, execute the following to get the official Docker installation script:
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+# After that, start the script and enjoy the ride:
+sudo sh get-docker.sh
+
+# Important! User pi does not exist by default anymore for a security reason
+
+# We have to add our linux user to the Docker group, but that is easy. If your user is not username as in the example below, just change the last part of the command by replacing pi with your username:
+
+sudo usermod -aG docker pi
+
+# Add these entries to vim /boot/cmdline.txt at the end of the line: apparmor=1 security=apparmor
+
+sudo vim /boot/cmdline.txt 
+
+# It should look like this: console=serial0,115200 console=tty1 root=PARTUUID=ae7ace51-02 rootfstype=ext4 fsck.repair=yes rootwait apparmor=1 security=apparmor systemd.unified_cgroup_hierarchy=false
+
+# Reboot the server
+sudo reboot
+
+# Check AppArmor status
+sudo aa-status
+
+# Check versions and compare. See system requirements: https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md
+
+sudo dpkg -l apparmor | tee
+sudo docker --version
+sudo systemctl --version
+sudo nmcli --version
+
+# Install the OS-Agent:
+# Download the latest Debian package from OS Agent GitHub release page at: https://github.com/home-assistant/os-agent/releases/latest
+wget https://github.com/home-assistant/os-agent/releases/download/1.4.0/os-agent_1.4.0_linux_armv7.deb
+
+# Next, install (or update) the downloaded Debian package using:
+sudo dpkg -i os-agent_1.4.0_linux_armv7.deb
+
+# You can test if the installation was successful by running:
+sudo gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
+
+# This should not return an error. If you get an object introspection with interface etc. OS Agent is working as expected.
+
+# Install the Home Assisistant Supervised Debian Package:
+wget https://github.com/home-assistant/supervised-installer/releases/download/1.3.0/homeassistant-supervised.deb
+
+# Next, install (or update) the downloaded Debian package using:
+sudo dpkg -i homeassistant-supervised.deb
+
+
+# Choose: raspberrypi4-64 See supported machine types: https://github.com/home-assistant/supervised-installer
+
+Change DNS entries
+
+sudo vim /etc/dhcpcd.conf
+# change the DNS entry to Google 8.8.4.4 and 8.8.8.8 because there was an IP address of the Raspberry Pi that was handling requests through the DNS, but requirements says clearly that it has to be different. See: https://github.com/home-assistant/operating-system/blob/dev/Documentation/network.md#static-ip
+
+interface eth0
+static ip_address=10.10.0.100/24 
+static routers=10.10.0.1
+static domain_name_servers=8.8.4.4 8.8.8.8
+
+If you are using the firewall like ufw , add port which Home Assistant is using
+sudo ufw allow 8123/tcp
+
+# Reboot the server
+sudo reboot
+
+# log into the Home Assistant in your browser
+http://10.10.0.100:8123/
