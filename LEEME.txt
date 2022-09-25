@@ -109,3 +109,9 @@ sudo reboot
 
 # log into the Home Assistant in your browser
 http://10.10.0.100:8123/
+
+
+-----------------------------------------
+
+
+https://community.home-assistant.io/t/installing-home-assistant-supervised-on-debian-11/200253
